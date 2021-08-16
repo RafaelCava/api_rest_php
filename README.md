@@ -1,3 +1,5 @@
 # Projeto Api-REST 
 
-## Utilizando PHP
+# Tecnologías
+ - MySQL
+ - PHP
