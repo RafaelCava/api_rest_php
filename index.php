@@ -35,7 +35,13 @@
           die(json_encode(array('sucesso'=>true, 'deletado'=>$id)));
           
         }else if($acao == 'atualizar_contato'){
+          if(!isset($_GET['id']))
+            die(json_encode(array('erro'=>'Precisamos de um id.')));
+          $id = (int)$_GET['id'];
           
+          if(isset($_GET['val']))
+            die(array('erro'=>'Precisamos do parâmetro valor.'));
+
         }else if($acao == 'visualizar_contato'){
           if(!isset($_GET['id']))
             die(json_encode(array('erro'=>'Precisamos de um id.')));
