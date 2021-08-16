@@ -39,8 +39,17 @@
             die(json_encode(array('erro'=>'Precisamos de um id.')));
           $id = (int)$_GET['id'];
           
-          if(isset($_GET['val']))
-            die(array('erro'=>'Precisamos do parâmetro valor.'));
+          if(!isset($_GET['val']))
+            die(json_encode(array('erro'=>'Precisamos do parâmetro valor.')));
+
+          $val = $_GET['val'];
+
+            $sql = $pdo->prepare("UPDATE `clientes` SET nome = ? WHERE id = ?");
+            if(  
+              $sql->execute(array($val,$id))
+            ){
+              die(json_encode(array('response'=> "O usuário com o id: " .$id. " teve o nome atualizado para: ". $val)));
+            }
 
         }else if($acao == 'visualizar_contato'){
           if(!isset($_GET['id']))
